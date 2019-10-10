@@ -1,0 +1,13 @@
+<html>
+<h1> Create Your New Article </h1>
+<form action="/articles" method="POST">
+  <label for="article_title">Title:</label>
+  <textarea name="title" cols="5" rows="2"> <%=@article.title%></textarea>
+  </br>
+  <label for="article_content">Content:</label>
+  <textarea name="content" cols="30" rows="10"> <%=@article.content%> </textarea>
+  </br>
+
+  <button type="submit" value="Submit">Submit</button>
+</form>
+</html>
