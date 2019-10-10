@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<h1> Articles Index Page </h1>
+<ul>
+<% @articles.each do |article| %>
+  <li>Title:<%= article.title %></li>
+  <li>Content:<%= article.content %></li>
+<% end %>
+</ul>
