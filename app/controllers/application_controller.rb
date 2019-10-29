@@ -23,8 +23,8 @@ class ApplicationController < Sinatra::Base
   end 
 
   get '/articles/:id' do
-      @article = Article.find_by(params[:id])
-      #@article = Article.find_by(id:params[:id])      
+     # @article = Article.find_by(params[:id])
+      @article = Article.find_by(id: params[:id])      
       #binding.pry
       if @article 
         erb :show
@@ -35,21 +35,19 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/articles/:id/edit' do
-    
-    @article = Article.find_by(params[:id])
+    #binding.pry
+    @article = Article.find_by(id: params[:id])
     erb :edit
   end
 
   patch '/articles/:id' do 
-    binding.pry
-    @article = Article.find_by(params[:id])
-    if @article.update(params[:article])
+    #binding.pry
+    @article = Article.find_by(id: params[:id])
+    if @article.update(title: params[:title]) && @article.update(content: params[:content])
       redirect "/articles/#{@article.id}"
     else
       redirect "/articles/#{@article.id}/edit"
     end
-    
-    
   end
 
   post '/articles' do
@@ -60,9 +58,15 @@ class ApplicationController < Sinatra::Base
     else
       redirect 'articles/new'
     end
-    
   end
 
-
+  delete '/articles/:id' do 
+    @article = Article.find_by(id: params[:id])
+    if @article.destroy
+      redirect "/articles"
+    else
+      redirect 'articles/#{@article.id}'
+    end
+  end
   
 end
