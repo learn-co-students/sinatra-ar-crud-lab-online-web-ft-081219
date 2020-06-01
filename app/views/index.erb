@@ -2,7 +2,9 @@
 <h1> Articles Index Page </h1>
 <ul>
 <% @articles.each do |article| %>
+  <br>
   <li>Title:<%= article.title %></li>
   <li>Content:<%= article.content %></li>
+  <br>
 <% end %>
 </ul>

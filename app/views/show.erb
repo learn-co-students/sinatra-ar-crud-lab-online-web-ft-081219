@@ -4,3 +4,8 @@
   <h3>Article No. <%=@article.id%></h3>
   <h4>Title: <%=@article.title%></h4><br>
   <h5>Content: <%=@article.content %></h5>
+  
+  <form method="POST" action="/article/<%=@article.id%>/delete">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Article?">
+  </form>
